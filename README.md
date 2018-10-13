@@ -50,7 +50,7 @@ Using the OMDB API, this will display:
   
   ### node liri do-what-it-says
 
-Using the text within the random.txt file, LIRI will call one it's commands.
+Using the text within the random.txt file, LIRI will call it's command.
 * Currently, the command is **spotify-this-song,"I want it that way"**
 * Change it to **movie-this,("Movie Title")** to utilize OMDB.
   

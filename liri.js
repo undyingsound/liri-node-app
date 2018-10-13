@@ -13,7 +13,6 @@ let spotify = new Spotify(keys.spotify);
 //grabs arguments
 let entry = process.argv;
 let input = process.argv[2];
-
 let title = "";
 if (process.argv[3] !== undefined) {
     for (i = 3; i < entry.length; i++) {

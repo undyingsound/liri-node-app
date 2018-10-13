@@ -3,7 +3,7 @@ require("dotenv").config();
 //apps
 let request = require("request");
 let Spotify = require("node-spotify-api");
-let moment = require('moment');
+let moment = require("moment");
 let fs = require("fs");
 
 //keys
@@ -172,13 +172,13 @@ function concertResult() {
     let arg = process.argv[3];
     let titleAdjust = arg.split("-");
     let title = titleAdjust.join("+");
-    let date = moment(date).format("MM/DD/YYYY");
+    
     var queryURL = "https://rest.bandsintown.com/artists/" + title + "/events?app_id=codingbootcamp";
 
     request(queryURL, function (error, response, body) {
 
         let data = JSON.parse(body);
-
+        date = moment(date).format("MM/DD/YYYY");
         for (var i = 0; i < data.length; i++) {
             if (!error && response.statusCode === 200) {
 
@@ -205,14 +205,16 @@ function DWIS() {
         if (err) {
             console.log("There was an error. Try Again.");
         }
-            let output = data.split(",");
-            let action = output[0];
-            process.argv[3] = output[1];
-            title = process.argv[3];
-    if (action === 'spotify-this-song') {
-        STSsearch();
-    };
+        let output = data.split(",");
+        let action = output[0];
+        process.argv[3] = output[1];
+        title = process.argv[3];
+        if (action === 'spotify-this-song') {
+            STSsearch();
+        };
+        if (action === 'movie-this') {
+            movie();
+        };
 
     });
 }
-   

@@ -178,14 +178,16 @@ function concertResult() {
     request(queryURL, function (error, response, body) {
 
         let data = JSON.parse(body);
-        date = moment(date).format("MM/DD/YYYY");
+        
         for (var i = 0; i < data.length; i++) {
             if (!error && response.statusCode === 200) {
-
-                console.log("Artist Name: " + data[i].artist.name);
+                let date = data[i].datetime;
+                let dateNew = moment(date);
+                let dateFinal = dateNew.format("MM/DD/YYYY");
                 console.log("Venue Name: " + data[i].venue.name);
-                console.log("Date: " + date);
                 console.log("Location: " + data[i].venue.city + ", " + data[i].venue.country);
+                console.log("Date: " + dateFinal);
+                
 
             }
             else if (error) {
